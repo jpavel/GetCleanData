@@ -22,8 +22,8 @@ will create directory `data` in your working directory and download and unzip th
 Function to create a data frame that contains subject ID, activity ID and all 561 derived variables ("feature vector"). The input raw data (acceleration and angular velocity vectors in "Inertial Signals" directory) are not considered. Function also adds variable names as a column names in the data frame
 
 Parameters (listed in order of appearence):
-* `inputDir` *string* that contains path to the directory where there is "train" and "test" directory
-* `inputTag` *string* that contains name of the data type to be read (either "train" or "test")
+* `inputDir` - *string* that contains path to the directory where there is "train" and "test" directory
+* `inputTag` - *string* that contains name of the data type to be read (either "train" or "test")
 
 The script workflow:
 1. The script reads from 3 text files and makes 3 data frames with the same amount of rows. 
