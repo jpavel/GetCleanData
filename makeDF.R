@@ -26,6 +26,14 @@ makeDF <- function(inputDir="data//UCI HAR Dataset/", inputTag="train"){
       # reading variable names
       var_names<-read.table(paste0(inputDir,"/features.txt"),stringsAsFactors = FALSE)
       names<-var_names[,2]
+      # adapt the names to be R-valid variable names:
+      # First remove/replace invalid charaters
+      names<-gsub("-","_",names)
+      names<-gsub("\\(","",names)
+      names<-gsub("\\)","",names)
+      names<-gsub(",","_",names)
+      #make all names unique (some variables have the same name)
+      names<-make.names(names,unique=TRUE)
       # assigning variable names to columns
       colnames(train_main)<-names
       colnames(train_act)<-c("activity")
