@@ -68,6 +68,11 @@ tBodyGyroJerkMean
 
 The complete list of variables of each feature vector is available in 'features.txt'. There are 561 variables in total.
 
+## Units
+The units were not indicated in the original dataset. However, it is likely that the units are SI units, i.e. the acceleration is in ms<sup>-2</sup> and angular velocity ("Gyro" variables) in s<sup>-1</sup>.
+
+It is possible that the original data used some other units, nevertheless the summary data derived later have the same units as original data - no transformation or scaling was applied.
+
 ## Additional processing
 
 ### Variable renaming
