@@ -23,6 +23,9 @@ Function takes 2 arguments:
 * `getData` - *boolean*; if TRUE, function downloads the input data from the internet. Default is FALSE.
 * `outFileName` - *string*; name of the output text file. Default is "tidySummary.txt"
 
+
+* **Note **: function uses functions from `dplyr` package, so please make sure it is installed (`install.packages("dplyr")`) 
+
 Example usage:
 ```
 > source("run_analysis.R")
