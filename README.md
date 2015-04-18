@@ -38,3 +38,34 @@ The default behavior is to read in train data provided by getData() function. To
 > testDF <- makeDF(inputTag="test")
 ```
 This creates 2 data frames (`trainDF` and `testDF`, respectivelly) that contain pre-processed training and test data together with subject and activity ID.
+
+
+### trimDF.R
+Function to keep only selected columns in the data frame. The columns to keep contain the mean and standard deviation of all variables derived from the raw acceleration and angular velocity vectors:
+
+```
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+```
+
+There are 33 variables in total ("XYZ" stands for 3 variables for 3 directions) The resulting data frame also contains subject and activity ID, so 68 variables in total
+
+* **Note 1**: the variables like `angle(tBodyGyroMean,gravityMean)` on positions 555-561 of the feature vectord were not considered: They are angles between the mean vectors,
+rather than mean themselves and can be derived from the XYZ components of mean vectors that are included in the data frame.
+
+* **Note 2**: `-meanFreq()` variables were not considered as well - they are mean of the frequency components, i.e. of the *domain* of the function, while we are interested in the mean of the *value* of the functions.
