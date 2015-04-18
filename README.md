@@ -68,7 +68,7 @@ The default behavior is to read in train data provided by getData() function. To
 This creates 2 data frames (`trainDF` and `testDF`, respectivelly) that contain pre-processed training and test data together with subject and activity ID.
 
 
-### trimDF.R
+### trimmDF.R
 Function to keep only selected columns in the data frame. The columns to keep contain the mean and standard deviation of all variables derived from the raw acceleration and angular velocity vectors:
 
 ```
