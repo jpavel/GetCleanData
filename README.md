@@ -6,6 +6,7 @@ Project for Coursera "Getting and Cleaning data" course
 ### run_analysis.R
 Function to run the full analysis chain using the other scripts (they are described below)
 Analysis steps are:
+
 1. downloading and unzipping data using `getData.R`
 2. making the data frames from the input text files using `makeDF.R`
 3. merging test and train data frames
@@ -16,6 +17,7 @@ Analysis steps are:
 7. apply per-group mean on all variables
 8. change name of the variables to reflect their new content
 9. write output text file
+
 
 Function takes 2 arguments:
 * `getData` - *boolean*; if TRUE, function downloads the input data from the internet. Default is FALSE.
