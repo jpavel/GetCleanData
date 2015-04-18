@@ -1,7 +1,33 @@
 # GetCleanData
 Project for Coursera "Getting and Cleaning data" course
 
-## Description of scripts
+## Main Script
+
+### run_analysis.R
+Function to run the full analysis chain using the other scripts (they are described below)
+Analysis steps are:
+1. downloading and unzipping data using `getData.R`
+2. making the data frames from the input text files using `makeDF.R`
+3. merging test and train data frames
+4. select only the variables showing mean and standard deviation with `trimmDF.R`
+5. assign human readable labels to the activities ID's using `getLabel.R` and `mutate` function
+6. group the pruned data set by subjects and activities using `group_by` function
+   * 6 activitiews X 30 subjects => 180 groups
+7. apply per-group mean on all variables
+8. change name of the variables to reflect their new content
+9. write output text file
+
+Function takes 2 arguments:
+* `getData` - *boolean*; if TRUE, function downloads the input data from the internet. Default is FALSE.
+* `outFileName` - *string*; name of the output text file. Default is "tidySummary.txt"
+
+Example usage:
+```
+> source("run_analysis.R")
+> tidyDF <- run_analysis()
+# returns tidy data.frame
+```
+## Other helping scripts
 
 ### getData.R
 Script to download a zip file from the internet to a given destination, unzip it and if requested delete the downloaded file
