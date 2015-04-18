@@ -69,3 +69,30 @@ There are 33 variables in total ("XYZ" stands for 3 variables for 3 directions) 
 rather than mean themselves and can be derived from the XYZ components of mean vectors that are included in the data frame.
 
 * **Note 2**: `-meanFreq()` variables were not considered as well - they are mean of the frequency components, i.e. of the *domain* of the function, while we are interested in the mean of the *value* of the functions.
+
+* **Note 3**: function uses `select` function from `dplyr` package, so please make sure it is installed (`install.packages("dplyr")`) 
+
+Example usage:
+```
+> source("trimmDF.R")
+> trimmedDF<- trimmDF(myDF)
+```
+
+## getLabel.R
+Functions to convert activity ID to human readable names.
+
+1. function `getLabelDF` returns data frame that it obtains from the specified text file (only input)
+     - default settings read the activity labels from the Siemens dataset
+
+2. function `getLabel` returns string with the desription of the meaning of the activity and takes 2 inputs
+   * *numeric* value specifying the activity ID
+   * *data.fram*e where names are assigned to the numeric ID's
+
+Example usage:
+```
+> source("getLabel.R")
+> myLabels<-getLabelDF()
+> getLabel(1,myLabels)
+[1] "WALKING"
+```
+
