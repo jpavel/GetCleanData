@@ -37,33 +37,34 @@ fBodyGyroJerkMag
 
 The set of variables that were estimated from signals listed in previous section are: 
 
-mean(): Mean value
-std(): Standard deviation
-mad(): Median absolute deviation 
-max(): Largest value in array
-min(): Smallest value in array
-sma(): Signal magnitude area
-energy(): Energy measure. Sum of the squares divided by the number of values. 
-iqr(): Interquartile range 
-entropy(): Signal entropy
-arCoeff(): Autorregresion coefficients with Burg order equal to 4
-correlation(): correlation coefficient between two signals
-maxInds(): index of the frequency component with largest magnitude
-meanFreq(): Weighted average of the frequency components to obtain a mean frequency
-skewness(): skewness of the frequency domain signal 
-kurtosis(): kurtosis of the frequency domain signal 
-bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
-angle(): Angle between to vectors.
+* mean(): Mean value
+* std(): Standard deviation
+* mad(): Median absolute deviation 
+* max(): Largest value in array
+* min(): Smallest value in array
+* sma(): Signal magnitude area
+* energy(): Energy measure. Sum of the squares divided by the number of values. 
+* iqr(): Interquartile range 
+* entropy(): Signal entropy
+* arCoeff(): Autorregresion coefficients with Burg order equal to 4
+* correlation(): correlation coefficient between two signals
+* maxInds(): index of the frequency component with largest magnitude
+* meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+* skewness(): skewness of the frequency domain signal 
+* kurtosis(): kurtosis of the frequency domain signal 
+* bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+* angle(): Angle between to vectors.
 
 If not said otherwise, these variables were calculated over single sampling window (128 readings)
 
 Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-
+```
 gravityMean
 tBodyAccMean
 tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
+```
 
 The complete list of variables of each feature vector is available in 'features.txt'. There are 561 variables in total.
 
@@ -71,12 +72,13 @@ The complete list of variables of each feature vector is available in 'features.
 
 ### Variable renaming
 In order to be usable in R, the variable names had to be changed:
-1) remove "-" from names and replace it by "_" (it improves readability)
-2) remote brackets (and replace by nothing)
-3) remove "," and replace by "_"
-4) add additional characters (".2") to variables bearing the same name
-   e.g. `fBodyGyro_bandsEnergy_25_48.1` and `fBodyGyro_bandsEnergy_25_48.2` (variables no. 490 and 504, respectively)
-5) Some variables had typo in their name (e.g. `fBodyBodyAccJerkMag_mean`): the additional "Body" was removed
+
+1. remove "-" from names and replace it by "_" (it improves readability)
+2. remote brackets (and replace by nothing)
+3. remove "," and replace by "_"
+4. add additional characters (".2") to variables bearing the same name
+   * e.g. `fBodyGyro_bandsEnergy_25_48.1` and `fBodyGyro_bandsEnergy_25_48.2` (variables no. 490 and 504, respectively)
+5. Some variables had typo in their name (e.g. `fBodyBodyAccJerkMag_mean`): the additional "Body" was removed
 
 ### Merging
 1. For both training and test data, the data for feature vector (561 colums) were merged with the column of activity and subject indicator, creating a dataset with 563 variables
@@ -84,7 +86,7 @@ In order to be usable in R, the variable names had to be changed:
 
 ### Trimming/Pruning
 
-Only the variables that showed a mean or standard deviation ("std") of some signal were kept. This means to keep all variables that originally had `mean()` or 'std()` in the name. The variables containing meanFreq() were not kept, as this observably is fundametally different from the simple mean: the former averages over the frequencies into which is signal decomposed, the latter averages over the values of signals. Also, the variables connected with the angle of average vectors were not kept as those can be easily obtained from the component values.
+Only the variables that showed a mean or standard deviation ("std") of some signal were kept. This means to keep all variables that originally had `mean()` or `std()` in the name. The variables containing `meanFreq()` were not kept, as this observably is fundametally different from the simple mean: the former averages over the frequencies into which is signal decomposed, the latter averages over the values of signals. Also, the variables connected with the angle of average vectors were not kept as those can be easily obtained from the component values.
 
 In total there were 66 selected variables (33 means and 33 standard deviations)
 
@@ -96,10 +98,10 @@ Activity indicator (integer 1-6) was replaced by more informative string.
 
 A dataset was devided into 180 groups (6 activities for 30 subjects) and per-group means of all selected variables have been calculated. The variable names are composed as follows:
 
-**[signal name]_[type of calculation]_[direction]**
+**[signal name]\_[type of calculation]\_[direction]**
 
 * **[signal name]** is a string corresponding to a signal name as defined in the beginning of this code book (e.g. `tBodyAcc` denoting the body acceleration in time domain)
 * **[type of calculation]** is either `TotalMean`, if the variable is a mean of a signal averaged over all measurements for a given activity of one subject, or `MeanStd` if the variable is the standard deviation averaged over all measurements for a given activity of one subject
 * **[direction]** is optional argument for observables with vector components and can be X,Y,Z 
 
-Example: *tGravityAcc_TotalMean_X* is the mean of the gravity acceleration in X direction that is averaged over all measurements for given activity and for given subject.
+**Example:** *tGravityAcc_TotalMean_X* is the mean of the gravity acceleration in X direction that is averaged over all measurements for given activity and for given subject.
