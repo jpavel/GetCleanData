@@ -99,6 +99,12 @@ In total there were 66 selected variables (33 means and 33 standard deviations)
 
 Activity indicator (integer 1-6) was replaced by more informative string.
 
+### New variables
+2 new variables were added to the dataset:
+
+* **activity** - contains a string indicating the activity done by the subject
+* **subject_id** - an integer between 1 and 30 indicating which subject was the source of data
+
 ### Averaging by group
 
 A dataset was devided into 180 groups (6 activities for 30 subjects) and per-group means of all selected variables have been calculated. The variable names are composed as follows:
